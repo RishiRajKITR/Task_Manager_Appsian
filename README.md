@@ -12,6 +12,12 @@ A full-stack Task Manager application built with React (TypeScript) frontend and
 - ✅ RESTful API backend
 - ✅ Persistent storage with in-memory database
 
+## 🌐 Live Demo (Bonus Task)
+
+- **Repository**: https://github.com/RishiRajKITR/Task_Manager_Appsian
+- **Frontend Deployment**: [Add your Vercel/Netlify URL here after deployment]
+- **Backend API**: [Add your Render/Azure URL here after deployment]
+
 ## 📋 Prerequisites
 
 Before running this application, ensure you have the following installed:
@@ -104,54 +110,38 @@ The React app will start on `http://localhost:3000` and automatically open in yo
 3. **Delete a Task**: Click the 🗑️ Delete button
 4. **Filter Tasks**: Use the "All", "Active", or "Completed" buttons
 
-## 🌐 Deployment (Bonus)
+## 🌐 Deployment (Bonus Task)
 
-### Frontend Deployment (Vercel/Netlify)
+### Quick Deployment Guide
 
-#### Using Vercel:
+#### Frontend - Vercel (Recommended, Free)
 
-1. Create account at [vercel.com](https://vercel.com)
-2. Install Vercel CLI:
+1. Install Vercel CLI and deploy:
    ```bash
    npm install -g vercel
-   ```
-3. Deploy:
-   ```bash
    cd task-manager-ui
    vercel --prod
    ```
 
-#### Using Netlify:
+#### Backend - Render (Recommended, Free)
 
-1. Build the project:
-   ```bash
-   cd task-manager-ui
-   npm run build
-   ```
-2. Deploy the `build` folder to [netlify.com](https://www.netlify.com/)
+1. Go to [render.com](https://render.com) and create account
+2. Click "New +" → "Web Service"
+3. Connect your GitHub repository
+4. Configure:
+   - **Root Directory**: `TaskManager.Api`
+   - **Build Command**: `dotnet publish -c Release -o out`
+   - **Start Command**: `dotnet out/TaskManager.Api.dll`
+5. Add environment variable: `ASPNETCORE_URLS=http://0.0.0.0:$PORT`
 
-### Backend Deployment (Azure/Render)
+#### Connect Frontend to Backend
 
-#### Using Azure:
-
-```bash
-cd TaskManager.Api
-az webapp up --name your-app-name --resource-group your-rg
-```
-
-#### Using Render:
-
-1. Create account at [render.com](https://render.com)
-2. Connect your GitHub repository
-3. Select "Web Service"
-4. Build command: `dotnet publish -c Release -o out`
-5. Start command: `dotnet out/TaskManager.Api.dll`
-
-**Important**: After deployment, update the API URL in `task-manager-ui/src/services/taskService.ts`:
-
+After deployment, update `task-manager-ui/src/services/taskService.ts`:
 ```typescript
-const API_BASE_URL = 'https://your-deployed-api-url/api/tasks';
+const API_BASE_URL = 'https://your-backend.onrender.com/api/tasks';
 ```
+
+Then redeploy frontend with `vercel --prod`
 
 ## 🔧 Configuration
 
@@ -211,9 +201,9 @@ npm start
 ## 📦 Technologies Used
 
 ### Frontend
-- React 19
-- TypeScript 4.9
-- Axios (HTTP client)
+- React 19.2.0
+- TypeScript 4.9.5
+- Axios 1.12.2 (HTTP client)
 - CSS (inline styles)
 
 ### Backend
@@ -222,29 +212,12 @@ npm start
 - Swagger/OpenAPI
 - In-memory database
 
-## 👨‍💻 Development
-
-### Adding New Features
-
-1. **Add new API endpoint**: Edit `TaskManager.Api/Controllers/TaskController.cs`
-2. **Add new frontend feature**: Create components in `task-manager-ui/src/components/`
-3. **Update types**: Modify `task-manager-ui/src/types/TaskItem.ts`
-
-### Code Style
-
-- Frontend: Follow React best practices with functional components and hooks
-- Backend: Follow C# coding conventions and RESTful API design
-
-## 📝 License
+##  License
 
 This project is created as an assignment submission.
 
-## 🙋‍♂️ Support
-
-For any issues or questions, please open an issue in the GitHub repository.
-
 ---
 
-**Developed by**: [Your Name]  
+**Repository**: https://github.com/RishiRajKITR/Task_Manager_Appsian  
 **Date**: October 2025  
 **Assignment**: Full-Stack Task Manager Application
